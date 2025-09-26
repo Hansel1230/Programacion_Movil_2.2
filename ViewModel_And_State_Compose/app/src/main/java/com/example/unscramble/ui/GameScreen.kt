@@ -39,7 +39,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextFieldDefaults
+//import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -182,19 +182,14 @@ fun GameLayout(
                 singleLine = true,
                 shape = shapes.large,
                 modifier = Modifier.fillMaxWidth(),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = colorScheme.surface,
-                    unfocusedContainerColor = colorScheme.surface,
-                    disabledContainerColor = colorScheme.surface,
-                ),
-                onValueChange = {onUserGuessChanged },
+                onValueChange = onUserGuessChanged,
                 label = { Text(stringResource(R.string.enter_your_word)) },
                 isError = false,
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
                 keyboardActions = KeyboardActions(
-                    onDone = {onKeyboardDone }
+                    onDone = {onKeyboardDone()}
                 )
             )
         }
