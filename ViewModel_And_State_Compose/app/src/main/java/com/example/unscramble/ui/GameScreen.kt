@@ -79,7 +79,8 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
         )
         GameLayout(
             onUserGuessChanged = { gameViewModel.updateUserGuess(it) },
-            onKeyboardDone = { },
+            onKeyboardDone = {gameViewModel.checkUserGuess() },
+            isGuessWrong = gameUiState.isGuessedWordWrong,
             userGuess = gameViewModel.userGuess,
             currentScrambledWord = gameUiState.currentScrambledWord,
             modifier = Modifier
@@ -97,7 +98,7 @@ fun GameScreen(gameViewModel: GameViewModel = viewModel()) {
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { }
+                onClick = { gameViewModel.checkUserGuess()}
             ) {
                 Text(
                     text = stringResource(R.string.submit),
@@ -137,6 +138,7 @@ fun GameStatus(score: Int, modifier: Modifier = Modifier) {
 fun GameLayout(
     onUserGuessChanged: (String) -> Unit,
     onKeyboardDone: () -> Unit,
+    isGuessWrong: Boolean,
     currentScrambledWord: String,
     userGuess: String,
     modifier: Modifier = Modifier
@@ -179,12 +181,18 @@ fun GameLayout(
             )
             OutlinedTextField(
                 value = userGuess,
+                isError = isGuessWrong,
                 singleLine = true,
                 shape = shapes.large,
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = onUserGuessChanged,
-                label = { Text(stringResource(R.string.enter_your_word)) },
-                isError = false,
+                label = {
+                    if (isGuessWrong) {
+                        Text(stringResource(R.string.wrong_guess))
+                    } else {
+                        Text(stringResource(R.string.enter_your_word))
+                    }
+                },
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
