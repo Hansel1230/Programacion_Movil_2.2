@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72581f30-06a8-4ff4-b536-5666ba4110de" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="72581f30-06a8-4ff4-b536-5666ba4110de" name="Changes" comment="delete files main" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +28,9 @@
     &quot;accountId&quot;: &quot;3a9b884f-1cbb-499c-854e-d23c597fb134&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -60,6 +61,15 @@
       <option name="presentableId" value="Default" />
       <updated>1758855927219</updated>
     </task>
+    <task id="LOCAL-00001" summary="delete files main">
+      <option name="closed" value="true" />
+      <created>1758856271503</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758856271503</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,5 +82,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="delete files main" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete files main" />
   </component>
 </project>
