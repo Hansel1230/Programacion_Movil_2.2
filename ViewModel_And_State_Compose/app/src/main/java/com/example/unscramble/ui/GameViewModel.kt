@@ -7,10 +7,11 @@ import com.example.unscramble.data.allWords
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import kotlinx.coroutines.flow.update
+import com.example.unscramble.data.SCORE_INCREASE
+import com.example.unscramble.data.MAX_NO_OF_WORDS
 
 class GameViewModel : ViewModel() {
-
-//Propiedad de copia de seguridad
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
 
@@ -49,6 +50,48 @@ class GameViewModel : ViewModel() {
 
     fun updateUserGuess(guessedWord: String){
         userGuess = guessedWord
+    }
+
+    fun checkUserGuess() {
+
+        if (userGuess.equals(currentWord, ignoreCase = true)) {
+            val updatedScore = _uiState.value.score.plus(SCORE_INCREASE)
+            updateGameState(updatedScore)
+        } else {
+            // User's guess is wrong, show an error
+            _uiState.update { currentState ->
+                currentState.copy(isGuessedWordWrong = true)
+            }
+        }
+        updateUserGuess("")
+    }
+
+    private fun updateGameState(updatedScore: Int) {
+        if (usedWords.size == MAX_NO_OF_WORDS){
+            //Last round in the game
+            _uiState.update { currentState ->
+                currentState.copy(
+                    isGuessedWordWrong = false,
+                    score = updatedScore,
+                    isGameOver = true
+                )
+            }
+        } else{
+            _uiState.update { currentState ->
+                currentState.copy(
+                    currentWordCount = currentState.currentWordCount.inc(),
+                    isGuessedWordWrong = false,
+                    currentScrambledWord = pickRandomWordAndShuffle(),
+                    score = updatedScore
+                )
+            }
+        }
+    }
+
+    fun skipWord() {
+        updateGameState(_uiState.value.score)
+        // Reset user guess
+        updateUserGuess("")
     }
 
     init {
