@@ -17,4 +17,6 @@
         \nIt was popularised in the 1960s with the release of Letraset sheets containing
         \nLorem Ipsum passages, and more recently with desktop publishing software like Aldus
         \nPageMaker including versions of Lorem Ipsum"</string>
+    <string name="what_is_your_nickname">What is your nickname?</string>
+    <string name="done">DONE</string>
 </resources>
